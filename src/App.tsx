@@ -22,15 +22,21 @@ function App() {
   <>
     <Galeria />
 
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '20px', padding: '20px' }}>
-      <<div style={{ flex: 2 }}>
-  <Calendario />
+    <div style={{
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
+  flexWrap: 'wrap', // por si en pantallas chicas necesita romper línea
+  gap: '20px',
+  padding: '20px'
+}}>
+  <div style={{ flex: '1 1 50%', minWidth: '300px' }}>
+    <Calendario />
+  </div>
+  <div style={{ flex: '1 1 50%', minWidth: '300px' }}>
+    <Actividades />
+  </div>
 </div>
-<div style={{ flex: 1 }}>
-  <Actividades />
-</div>
-
-    </div>
 
     <Nosotros />
     <Profesores />
