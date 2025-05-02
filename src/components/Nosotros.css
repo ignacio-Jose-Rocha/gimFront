@@ -1,31 +1,40 @@
 .container {
   max-width: 1140px;
+  margin: 0 auto;
 }
 
 h2 {
   color: #ff6600;
-  margin-bottom: 1rem;
+  font-size: 2rem; /* Tamaño más grande */
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px; /* Espaciado entre letras para mayor impacto */
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #333;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-family: 'Roboto', sans-serif; /* Fuente moderna */
 }
 
 .map-container {
   position: relative;
   width: 100%;
-  height: 400px; /* Altura fija para el mapa */
-  border-radius: 8px;
+  height: 400px; /* Mantener altura fija */
+  border-radius: 10px;
   overflow: hidden;
-  margin-top: 1rem; /* Espacio por defecto debajo del texto en pantallas pequeñas */
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Agregar sombra sutil */
 }
 
 iframe {
   border: none;
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .nosotros-section {
@@ -34,7 +43,9 @@ iframe {
   background-position: center;
   background-repeat: no-repeat;
   color: white;
-  padding: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Agregar sombra interna para dar profundidad */
 }
 
 .nosotros-section h2,
@@ -44,21 +55,32 @@ iframe {
   color: #000;
 }
 
-/* Estilos para pantallas medianas (md) y superiores - uno al lado del otro */
+.nosotros-section p {
+  margin-top: 10px;
+  font-family: 'Roboto', sans-serif; /* Fuente moderna */
+  line-height: 1.6;
+}
+
+.nosotros-section .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos para pantallas medianas (md) y superiores */
 @media (min-width: 768px) {
   .row.align-items-center > .col-md-6 {
     flex: 0 0 50%;
     max-width: 50%;
-    padding-right: 15px; /* Añade un poco de espacio entre las columnas */
-    padding-left: 15px;
+    padding: 0 15px;
   }
 
   .map-container {
-    margin-top: 0; /* Elimina el margen superior en pantallas grandes */
+    margin-top: 0;
   }
 }
 
-/* Estilos para pantallas pequeñas (sm) y inferiores - uno debajo del otro */
+/* Estilos para pantallas pequeñas (sm) y menores */
 @media (max-width: 767.98px) {
   .row.align-items-center > .col-md-6 {
     flex: 0 0 100%;
@@ -66,6 +88,24 @@ iframe {
   }
 
   .map-container {
-    margin-top: 20px; /* Añade espacio entre el texto y el mapa */
+    margin-top: 20px;
   }
+}
+
+/* Efectos al pasar el ratón por encima */
+.nosotros-section h2:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+.nosotros-section p:hover {
+  color: #ff6600;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+
+.map-container:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
 }
