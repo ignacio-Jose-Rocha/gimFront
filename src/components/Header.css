@@ -1,21 +1,18 @@
 .logo-icono {
-  height: 40px;
+  height: 60px;  
 }
 
 .logo-texto {
-  height: 40px;
-   background: transparent;
+  height: 80px;  
+  background: transparent;
 }
+
 
 
 @media (max-width: 576px) {
   .logo {
-    height: 24px;
+    height: 40px;  
   }
-  .logoa {
-    height: 70px;
-  }
-
 }
 
 .navbar-toggler {
@@ -65,11 +62,11 @@
 
 @media (min-width: 768px) {
   .logo-icono {
-    height: 40px;
+    height: 60px;  
   }
 
   .logo-texto {
-    height: 60px;
+    height: 80px;  
   }
 }
 
