@@ -1,0 +1,71 @@
+.container {
+  max-width: 1140px;
+}
+
+h2 {
+  color: #ff6600;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Altura fija para el mapa */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 1rem; /* Espacio por defecto debajo del texto en pantallas pequeñas */
+}
+
+iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.nosotros-section {
+  background-image: linear-gradient(rgba(255, 102, 0, 0.6), rgba(255, 102, 0, 0.6)), url('../assets/gm.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 20px;
+}
+
+.nosotros-section h2,
+.nosotros-section p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000;
+}
+
+/* Estilos para pantallas medianas (md) y superiores - uno al lado del otro */
+@media (min-width: 768px) {
+  .row.align-items-center > .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-right: 15px; /* Añade un poco de espacio entre las columnas */
+    padding-left: 15px;
+  }
+
+  .map-container {
+    margin-top: 0; /* Elimina el margen superior en pantallas grandes */
+  }
+}
+
+/* Estilos para pantallas pequeñas (sm) y inferiores - uno debajo del otro */
+@media (max-width: 767.98px) {
+  .row.align-items-center > .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .map-container {
+    margin-top: 20px; /* Añade espacio entre el texto y el mapa */
+  }
+}

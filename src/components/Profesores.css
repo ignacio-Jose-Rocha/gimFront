@@ -1,0 +1,49 @@
+.foto-profesor {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.foto-profesor:hover {
+  transform: scale(1.05);
+}
+
+.video-container iframe {
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.foto-profesor img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #f25e04; 
+  transition: transform 0.3s ease;
+}
+
+.foto-profesor img:hover {
+  transform: scale(1.05);
+}
+
+
+.video-popup {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.video-popup.mostrar {
+  max-height: 400px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+

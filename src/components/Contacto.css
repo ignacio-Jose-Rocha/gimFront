@@ -1,0 +1,112 @@
+.contacto-section {
+  background-color: #f25e04;
+  min-height: auto; 
+  padding-top: 50px; 
+  padding-bottom: 50px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra el contenido verticalmente */
+  align-items: center; /* Centra el contenido horizontalmente */
+}
+
+.container {
+  width: 100%;
+  max-width: 800px; /* Limita el ancho del contenedor en pantallas grandes */
+  padding: 10px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-dark {
+  color: #333; /* Un color oscuro para el texto */
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem; /* Espacio debajo del título */
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.col-md-6 {
+  width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+  max-width: 600px; /* Ancho máximo en pantallas medianas y grandes */
+}
+
+.mb-3 {
+  margin-bottom: 1rem; /* Espacio entre los elementos del formulario */
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho */
+}
+
+.form-control:focus {
+  outline: 0;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.w-100 {
+  width: 100%; /* Hace que el botón ocupe todo el ancho de su contenedor */
+}
+
+/* Estilos para pantallas más pequeñas (celulares) */
+@media (max-width: 600px) {
+  .contacto-section {
+    min-height: auto; /* Elimina la altura mínima en pantallas pequeñas */
+    padding-top: 30px; /* Reduce el padding superior */
+    padding-bottom: 30px; /* Reduce el padding inferior */
+  }
+
+  .container {
+    padding: 15px; /* Reduce el padding del contenedor */
+  }
+
+  .mb-4 {
+    margin-bottom: 1rem; /* Reduce el margen inferior del título */
+  }
+}
