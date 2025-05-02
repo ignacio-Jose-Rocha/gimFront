@@ -19,20 +19,27 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={
-          <>
-            <Galeria />
-            <Calendario />
-            <Actividades />
-             <Nosotros />
-            <Profesores />
-            
-            <h2 style={{ textAlign: 'center' }}>Actividades</h2>
-            
-            <br />
-           
-            <Contacto />
-          </>
-        } />
+  <>
+    <Galeria />
+
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '20px', padding: '20px' }}>
+      <<div style={{ flex: 2 }}>
+  <Calendario />
+</div>
+<div style={{ flex: 1 }}>
+  <Actividades />
+</div>
+
+    </div>
+
+    <Nosotros />
+    <Profesores />
+
+    <h2 style={{ textAlign: 'center' }}>Actividades</h2>
+    <br />
+    <Contacto />
+  </>
+} />
         <Route path="/login" element={<Login />} />
       </Routes>
       {shouldShowFooter && <Footer />}
