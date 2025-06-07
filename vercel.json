@@ -1,25 +1,11 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "backend/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["backend/**"]
-      }
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "dist",
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/backend/server.js"
+      "dest": "/api/server.js"
     },
     {
       "src": "/(.*)",
@@ -31,7 +17,7 @@
     "VERCEL": "1"
   },
   "functions": {
-    "backend/server.js": {
+    "api/server.js": {
       "maxDuration": 30,
       "memory": 1024
     }
