@@ -44,43 +44,66 @@ const Header = () => {
   };
 
   return (
-    <header className=" text-warning p-3">
-<div className="container">
-  <nav className="navbar custom-navbar navbar-dark fixed-top bg-dark">
+    <header className="gym-header">
+      <nav className="navbar navbar-expand-lg fixed-top">
+        <div className="container">
+          {/* Logo Section */}
+          <div className="navbar-brand">
+            <img src={logo1} alt="Center Fit Logo" className="logo-icon" />
+            <img src={logo2} alt="Center Fit Text" className="logo-text" />
+          </div>
 
-
-    {/* Logo */}
-    <div className="d-flex align-items-center mb-3 mb-md-0 w-auto ms-0">
-     <img src={logo1} alt="Logo 1" className="logo me-2 logo-icono" />
-<img src={logo2} alt="Logo 2" className="logo logo-texto" />
-
-    </div>
-
-
+          {/* Mobile Menu Button */}
           <button
-            className="navbar-toggler ms-auto"
+            className="navbar-toggler"
             type="button"
             onClick={toggleMenu}
             aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
           </button>
 
+          {/* Navigation Menu */}
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto text-center gap-2">
- <li className="nav-item"><Link to="/" className="nav-link nav-link-glow">INICIO</Link></li>
-<li className="nav-item"><a href="/#galeria" className="nav-link nav-link-glow">GALERIA</a></li>
-<li className="nav-item"><a href="/#calendario" className="nav-link nav-link-glow">CALENDARIO</a></li>
-<li className="nav-item"><a href="/#nosotros" className="nav-link nav-link-glow">NOSOTROS</a></li>
-<li className="nav-item"><a href="/#profesores" className="nav-link nav-link-glow">PROFESORES</a></li>
-<li className="nav-item"><a href="/#contacto" className="nav-link nav-link-glow">CONTACTO</a></li>
-</ul>
-
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link to="/" className="nav-link">
+                  INICIO
+                </Link>
+              </li>
+              <li className="nav-item">
+                <a href="/#galeria" className="nav-link">
+                  GALERÍA
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="/#calendario" className="nav-link">
+                  CALENDARIO
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="/#nosotros" className="nav-link">
+                  NOSOTROS
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="/#profesores" className="nav-link">
+                  PROFESORES
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="/#contacto" className="nav-link">
+                  CONTACTO
+                </a>
+              </li>
+            </ul>
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
   );
 };

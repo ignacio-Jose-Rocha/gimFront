@@ -38,3 +38,63 @@ frontend/.cache/
 .DS_Store
 Thumbs.db
 
+# ⚡ SEGURIDAD - ARCHIVOS SENSIBLES
+backend/.env
+backend/.env.local
+backend/.env.production
+*.db
+*.sqlite
+*.sqlite3
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
+
+# ⚡ UPLOADS Y ARCHIVOS TEMPORALES
+backend/uploads/*
+!backend/uploads/.gitkeep
+tmp/
+temp/
+
+# ⚡ VERCEL
+.vercel
+
+# ⚡ SEGURIDAD - ARCHIVOS SENSIBLES
+backend/.env
+backend/.env.local
+backend/.env.production
+*.db
+*.sqlite
+*.sqlite3
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
+
+# ⚡ UPLOADS Y ARCHIVOS TEMPORALES
+backend/uploads/*
+!backend/uploads/.gitkeep
+tmp/
+temp/
+
+# ⚡ VERCEL
+.vercel
+
+# ⚡ SEGURIDAD - ARCHIVOS SENSIBLES
+backend/.env
+backend/.env.local
+backend/.env.production
+*.db
+*.sqlite
+*.sqlite3
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
+
+# ⚡ UPLOADS Y ARCHIVOS TEMPORALES
+backend/uploads/*
+!backend/uploads/.gitkeep
+tmp/
+temp/
+
+# ⚡ VERCEL
+.vercel
+

@@ -1,35 +1,260 @@
-.carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: 20px auto;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Paleta de colores: Negro, Naranja, Rojo, Amarillo */
+:root {
+  --color-black: #1a1a1a;
+  --color-orange: #ff6600;
+  --color-red: #dc2626;
+  --color-yellow: #fbbf24;
+  --color-white: #ffffff;
+  --color-gray: #f5f5f5;
 }
 
-.carousel-slide {
+.actividades-section {
+  padding: 100px 20px 150px 20px;
+  background: linear-gradient(135deg, var(--color-black) 0%, #2d2d2d 100%);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.actividades-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-orange) 0%, var(--color-red) 50%, var(--color-yellow) 100%);
+}
+
+.actividades-title {
+  color: var(--color-white);
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 60px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, var(--color-orange), var(--color-yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.carousel-container {
+  position: relative;
   width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  background: white;
+}
+
+.carousel-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 600px;
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: grab;
+}
+
+.carousel-slide:active {
+  cursor: grabbing;
+}
+
+.carousel-slide.transitioning {
+  transform: scale(0.98);
+  transition: transform 0.3s ease;
+}
+
+.actividad-card {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.imagen-container {
+  position: relative;
+  flex: 1;
+  min-height: 600px;
+  overflow: hidden;
 }
 
 .actividad-imagen {
   width: 100%;
-  height: auto;
-  max-height: 300px;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+  border-radius: 0;
+}
+
+.actividad-imagen:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos específicos para cada actividad */
+.actividad-card[data-actividad="Yoga"] .actividad-imagen {
+  background: linear-gradient(135deg, var(--color-orange) 0%, rgba(255, 102, 0, 0.8) 100%),
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="white" text-anchor="middle" x="50">🧘‍♀️</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.actividad-card[data-actividad="Spinning"] .actividad-imagen {
+  background: linear-gradient(135deg, var(--color-red) 0%, rgba(220, 38, 38, 0.8) 100%),
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="white" text-anchor="middle" x="50">🚴‍♂️</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.actividad-card[data-actividad="Funcional"] .actividad-imagen {
+  background: linear-gradient(135deg, var(--color-yellow) 0%, rgba(251, 191, 36, 0.8) 100%),
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="black" text-anchor="middle" x="50">💪</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.actividad-card[data-actividad="Boxeo"] .actividad-imagen {
+  background: linear-gradient(135deg, var(--color-black) 0%, rgba(26, 26, 26, 0.8) 100%),
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="orange" text-anchor="middle" x="50">🥊</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.actividad-card[data-actividad="Jiu Jitsu"] .actividad-imagen {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 100%),
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="white" text-anchor="middle" x="50">🥋</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.actividad-card[data-actividad="Karate"] .actividad-imagen {
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%),
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="white" text-anchor="middle" x="50">🥋</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.actividad-card[data-actividad="Sala de Musculación"] .actividad-imagen {
+  background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-orange) 100%),
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="20" fill="black" text-anchor="middle" x="50">🏋️‍♂️</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.imagen-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 40px 30px 30px;
+  color: white;
+}
+
+.actividad-titulo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.actividad-content {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, var(--color-black) 0%, #2d2d2d 100%);
 }
 
 .actividad-descripcion {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 15px;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--color-white);
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.beneficios-section {
+  margin-bottom: 30px;
+}
+
+.beneficios-section h4 {
+  color: var(--color-orange);
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.beneficio-tag {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 100%);
+  color: var(--color-white);
+  padding: 10px 15px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.beneficio-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 102, 0, 0.4);
+}
+
+.beneficio-tag i {
+  font-size: 0.8rem;
+}
+
+.horarios-section h4 {
+  color: var(--color-yellow);
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.horarios-text {
+  background: rgba(251, 191, 36, 0.1);
+  padding: 18px;
+  border-radius: 12px;
+  border-left: 4px solid var(--color-yellow);
+  font-weight: 500;
+  color: var(--color-white);
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.2);
 }
 
 .prev-button,
@@ -37,48 +262,172 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 100%);
   border: none;
-  font-size: 1.5rem;
-  color: white;
-  padding: 10px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  color: var(--color-white);
   cursor: pointer;
   z-index: 10;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
 .prev-button:hover,
 .next-button:hover {
-  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 15px 30px rgba(255, 102, 0, 0.4);
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);
 }
 
 .prev-button {
-  left: 10px;
+  left: -30px;
 }
 
 .next-button {
-  right: 10px;
+  right: -30px;
 }
 
 .carousel-dots {
   position: absolute;
-  bottom: 10px;
+  bottom: -60px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
+  gap: 15px;
+  background: rgba(26, 26, 26, 0.9);
+  padding: 12px 25px;
+  border-radius: 30px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--color-orange);
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 102, 0, 0.4);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .dot.active {
-  background-color: white;
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-yellow) 100%);
+  transform: scale(1.3);
+  border-color: var(--color-white);
+}
+
+.dot:hover {
+  transform: scale(1.2);
+  background: var(--color-orange);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .actividades-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .actividad-card {
+    flex-direction: column;
+  }
+
+  .imagen-container {
+    min-height: 300px;
+  }
+
+  .actividad-content {
+    padding: 20px;
+  }
+
+  .beneficios-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prev-button,
+  .next-button {
+    display: none; /* Ocultar flechas en móvil */
+  }
+
+  /* Mostrar indicación de navegación táctil en móvil */
+  .carousel-container::after {
+    content: "Desliza o toca los puntos para navegar";
+    position: absolute;
+    bottom: -90px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    text-align: center;
+    font-style: italic;
+    animation: fadeInOut 4s ease-in-out infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .carousel-container {
+    margin: 0 10px;
+  }
+
+  .carousel-dots {
+    bottom: -50px;
+    padding: 15px 25px;
+    gap: 15px;
+    background: rgba(26, 26, 26, 0.95);
+    border: 3px solid var(--color-orange);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  .dot {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--color-orange);
+  }
+
+  .dot.active {
+    background: var(--color-orange);
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.6);
+    transform: scale(1.2);
+  }
+
+  .actividades-section {
+    padding: 80px 20px 160px 20px;
+  }
+
+  /* Mejorar interacción táctil en móvil */
+  .carousel-slide {
+    cursor: grab;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .carousel-slide:active {
+    cursor: grabbing;
+  }
+
+  .dot {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-width: 16px;
+    min-height: 16px;
+  }
+
+  .dot:hover,
+  .dot:active {
+    transform: scale(1.3);
+    background: var(--color-yellow);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+  }
 }

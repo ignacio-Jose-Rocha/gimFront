@@ -1,68 +1,597 @@
+/* Paleta de colores: Negro, Naranja, Rojo, Amarillo */
+:root {
+  --color-black: #1a1a1a;
+  --color-orange: #ff6600;
+  --color-red: #dc2626;
+  --color-yellow: #fbbf24;
+  --color-white: #ffffff;
+  --color-gray: #f5f5f5;
+}
+
 .calendario-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 40px;
+  background: linear-gradient(135deg, var(--color-black) 0%, #2d2d2d 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.calendario-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-orange) 0%, var(--color-red) 50%, var(--color-yellow) 100%);
+}
+
+.calendario-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.calendario-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.calendario-title i {
+  color: var(--color-orange);
+  font-size: 2.2rem;
+}
+
+.calendario-subtitle {
+  font-size: 1.2rem;
+  color: #cccccc;
+  margin: 0;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.calendario-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.calendar-section {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 102, 0, 0.2);
+}
+
+.events-section {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.events-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.events-title i {
+  color: var(--color-red);
+}
+
+.events-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 15px;
+}
+
+.event-item {
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 100%);
+  color: var(--color-white);
+  padding: 15px 20px;
+  border-radius: 12px;
+  display: flex;
   align-items: center;
-  min-height: 400px; 
-  padding: 20px; 
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 600;
+  box-shadow: 0 6px 12px rgba(255, 102, 0, 0.3);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(255, 102, 0, 0.4);
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);
+}
+
+.event-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.event-item i {
+  font-size: 1.1rem;
+  min-width: 20px;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.event-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.event-time {
+  color: var(--color-yellow);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.event-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.event-actions {
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.event-item:hover .event-actions {
+  opacity: 1;
+}
+
+.edit-button,
+.delete-button {
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  min-width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-button {
+  background: linear-gradient(135deg, var(--color-yellow) 0%, #f59e0b 100%);
+  color: var(--color-black);
+}
+
+.edit-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+}
+
+.delete-button {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: white;
+}
+
+.delete-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+.no-events {
   text-align: center;
+  padding: 40px 20px;
+  color: #999;
 }
 
-.image-container {
-  margin-bottom: 20px;
-  width: 100%; 
-  max-width: 600px; 
+.no-events i {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: #ddd;
 }
 
-.calendario-image {
+.no-events p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Estilos para el calendario de React Calendar */
+.custom-calendar {
   width: 100%;
-  height: auto; 
-  display: block; 
+  border: none;
+  font-family: inherit;
 }
 
-.upload-container {
+.custom-calendar .react-calendar__navigation {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.custom-calendar .react-calendar__navigation button {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  background: none;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-calendar .react-calendar__navigation button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.custom-calendar .react-calendar__month-view__weekdays {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.custom-calendar .react-calendar__month-view__weekdays__weekday {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.custom-calendar .react-calendar__tile {
+  background: none;
+  border: none;
+  padding: 15px 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.custom-calendar .react-calendar__tile:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transform: scale(1.05);
+}
+
+.custom-calendar .react-calendar__tile--active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 700;
+}
+
+.custom-calendar .react-calendar__tile--now {
+  background: #ffd700;
+  color: #333;
+  font-weight: 700;
+}
+
+.event-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+
+.event-dot {
+  width: 6px;
+  height: 6px;
+  background: #ff4757;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Estilos para la sección de administración */
+.admin-section {
+  background: linear-gradient(135deg, var(--color-black) 0%, #2d2d2d 100%);
+  border-radius: 15px;
+  padding: 30px;
+  margin-top: 40px;
+  border: 2px solid var(--color-orange);
+  box-shadow: 0 10px 30px rgba(255, 102, 0, 0.3);
+  margin-bottom: 30px;
+}
+
+.admin-section h3 {
+  color: var(--color-orange);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-section h3 i {
+  color: var(--color-orange);
+}
+
+.logout-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+
+.logout-button {
+  background: linear-gradient(135deg, var(--color-red) 0%, #8b0000 100%);
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.logout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+}
+
+
+
+/* Estilos para errores */
+.error-container {
+  background: #ffe6e6;
+  border: 1px solid #ff4757;
+  border-radius: 10px;
+  padding: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 20px;
 }
 
-.logout-button {
-  padding: 8px 16px;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.logout-button:hover {
-  background-color: #d32f2f;
+.error-container i {
+  color: #ff4757;
+  font-size: 1.2rem;
 }
 
 .error-text {
-  color: red;
-  margin-top: 10px; 
+  color: #ff4757;
+  margin: 0;
+  font-weight: 500;
 }
 
-
-@media (max-width: 600px) {
+/* Responsive Design */
+@media (max-width: 768px) {
   .calendario-container {
-    padding: 15px; 
+    padding: 20px;
+    margin: 20px;
   }
 
-  .image-container {
-    margin-bottom: 15px;
-  }
-
-  .upload-container {
+  .calendario-title {
+    font-size: 2rem;
     flex-direction: column;
-    align-items: stretch; 
     gap: 10px;
-    margin-top: 15px; 
+  }
+
+  .calendario-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .calendar-section,
+  .events-section,
+  .admin-section {
+    padding: 20px;
+  }
+
+  .logout-container {
+    margin-top: 15px;
   }
 
   .logout-button {
-    width: 100%;
+    justify-content: center;
   }
+
+  .custom-calendar .react-calendar__tile {
+    padding: 10px 5px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Gestión de actividades */
+.activity-management {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 102, 0, 0.3);
+}
+
+.activity-management h4 {
+  color: var(--color-yellow);
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-activity-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--color-yellow) 0%, #f59e0b 100%);
+  color: var(--color-black);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.add-activity-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+}
+
+/* Formulario de agregar actividad */
+.add-activity-form {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 25px;
+  border: 1px solid rgba(255, 102, 0, 0.2);
+}
+
+.form-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 102, 0, 0.3);
+}
+
+.form-header h5 {
+  color: var(--color-orange);
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: var(--color-white);
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.selected-date {
+  color: var(--color-yellow);
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid rgba(255, 102, 0, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.save-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-red) 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.save-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+}
+
+.cancel-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.cancel-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
 }

@@ -26,7 +26,10 @@ const Footer = () => {
       </div>
 
       <div className="footer-column">
-        <h3 className="footer-title">Redes Sociales</h3>
+        <h3 className="footer-title">
+          <i className="fas fa-share-alt"></i>
+          Redes Sociales
+        </h3>
         <ul className="footer-list">
           <li>
             <a
@@ -35,6 +38,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="footer-link"
             >
+              <i className="fab fa-instagram"></i>
               <span>Instagram</span>
             </a>
           </li>
@@ -44,9 +48,13 @@ const Footer = () => {
       {/* Solo mostrar esta columna si NO está logueado */}
       {!isLoggedIn && (
         <div className="footer-column">
-          <h3 className="footer-title">Acceso</h3>
+          <h3 className="footer-title">
+            <i className="fas fa-user-shield"></i>
+            Acceso
+          </h3>
           <button className="footer-button" onClick={redirectToLogin}>
-            Área Administrativa
+            <i className="fas fa-key"></i>
+            <span>Área Administrativa</span>
           </button>
         </div>
       )}
