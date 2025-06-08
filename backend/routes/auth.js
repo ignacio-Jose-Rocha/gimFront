@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { getUserByUsername } = require('../database');
+const { getUserByUsername } = require('../database-supabase');
 
 const router = express.Router();
 

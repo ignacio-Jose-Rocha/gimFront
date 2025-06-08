@@ -1,11 +1,11 @@
 const express = require('express');
-const { 
-  getAllActivities, 
-  getActivitiesByDate, 
-  createActivity, 
-  updateActivity, 
-  deleteActivity 
-} = require('../database');
+const {
+  getAllActivities,
+  getActivitiesByDate,
+  createActivity,
+  updateActivity,
+  deleteActivity
+} = require('../database-supabase');
 
 const router = express.Router();
 

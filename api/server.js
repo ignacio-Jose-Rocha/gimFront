@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const { initDatabase } = require('../backend/database');
+const { initDatabase } = require('../backend/database-supabase');
 
 // Importar rutas
 const authRoutes = require('../backend/routes/auth');

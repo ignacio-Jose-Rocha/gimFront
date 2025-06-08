@@ -4,6 +4,7 @@
   "description": "API serverless para gimnasio con SQLite",
   "main": "server.js",
   "dependencies": {
+    "@supabase/supabase-js": "^2.50.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
