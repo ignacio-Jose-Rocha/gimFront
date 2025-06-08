@@ -62,6 +62,36 @@ app.get('/api/test', (req, res) => {
   });
 });
 
+// Ruta keep-alive para mantener Supabase activo
+app.get('/api/keep-alive', async (req, res) => {
+  try {
+    console.log('🔄 Keep-alive ping to Supabase...');
+
+    const { getUserByUsername } = require('./database');
+
+    // Hacer una consulta simple para mantener la conexión activa
+    const testUser = await getUserByUsername('admin');
+
+    console.log('✅ Keep-alive successful');
+
+    res.status(200).json({
+      success: true,
+      message: 'Supabase keep-alive ping successful',
+      timestamp: new Date().toISOString(),
+      user_found: !!testUser,
+      environment: process.env.VERCEL ? 'Vercel' : 'Local'
+    });
+
+  } catch (err) {
+    console.error('❌ Keep-alive exception:', err);
+    res.status(500).json({
+      success: false,
+      error: err.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
 // Manejo de errores
 app.use((err, req, res, next) => {
   console.error('Error:', err);
