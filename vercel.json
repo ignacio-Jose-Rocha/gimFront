@@ -1,13 +1,7 @@
 {
-  "buildCommand": "npm run vercel-build",
-  "functions": {
-    "api/server.js": {
-      "maxDuration": 30
-    }
-  },
   "crons": [
     {
-      "path": "/api/keep-alive",
+      "path": "/keep-alive.html",
       "schedule": "0 */6 * * *"
     }
   ],
