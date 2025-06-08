@@ -38,47 +38,50 @@ const initDatabase = async () => {
 // Inicializar Supabase
 const initSupabase = async () => {
   try {
-    // Verificar si las tablas existen, si no, las crea automáticamente
-    // En Supabase, las tablas se crean desde el dashboard o con SQL
-    
+    console.log('🔄 Inicializando Supabase...');
+
     // Verificar si existe el usuario admin
-    const { data: existingUser } = await db
+    const { data: existingUser, error: selectError } = await db
       .from('users')
       .select('*')
-      .eq('username', 'admin')
-      .single();
+      .eq('username', 'admin');
 
-    if (!existingUser) {
+    console.log('👤 Usuarios admin encontrados:', existingUser?.length || 0);
+
+    if (!existingUser || existingUser.length === 0) {
       // Crear usuario admin
       const adminUsername = process.env.ADMIN_USERNAME || 'admin';
       const adminPassword = process.env.ADMIN_PASSWORD || 'aguanteAllBoys';
       const hashedPassword = bcrypt.hashSync(adminPassword, 10);
-      
-      const { error } = await db
+
+      console.log('🔐 Creando usuario admin...');
+      const { data: newUser, error } = await db
         .from('users')
         .insert([
-          { 
-            username: adminUsername, 
-            password: hashedPassword, 
-            role: 'admin' 
+          {
+            username: adminUsername,
+            password: hashedPassword,
+            role: 'admin'
           }
-        ]);
+        ])
+        .select()
+        .single();
 
       if (error) {
-        console.error('Error creando usuario admin:', error);
+        console.error('❌ Error creando usuario admin:', error);
       } else {
-        console.log('Usuario admin creado exitosamente en Supabase');
+        console.log('✅ Usuario admin creado exitosamente:', newUser);
       }
     } else {
-      console.log('Usuario admin ya existe en Supabase');
+      console.log('✅ Usuario admin ya existe en Supabase');
     }
 
     // Agregar datos de ejemplo
     await initSampleDataSupabase();
-    
+
   } catch (error) {
-    console.error('Error inicializando Supabase:', error);
-    throw error;
+    console.error('❌ Error inicializando Supabase:', error);
+    // No lanzar error para que la app siga funcionando
   }
 };
 
