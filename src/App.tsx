@@ -8,6 +8,7 @@ import Calendario from './components/Calendario';
 import Footer from './components/Footer';
 import Login from './components/login';
 import Actividades from './components/actividades';
+import KeepAlive from './components/KeepAlive';
 
 function App() {
   const location = useLocation();
@@ -45,6 +46,7 @@ function App() {
   </>
 } />
         <Route path="/login" element={<Login />} />
+        <Route path="/keep-alive" element={<KeepAlive />} />
       </Routes>
       {shouldShowFooter && <Footer />}
     </>
