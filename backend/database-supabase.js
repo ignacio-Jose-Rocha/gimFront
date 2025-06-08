@@ -10,8 +10,8 @@ if (isVercel || isProduction) {
   // En Vercel o producción, usar Supabase
   const { createClient } = require('@supabase/supabase-js');
   
-  const supabaseUrl = process.env.SUPABASE_URL || 'https://your-project.supabase.co';
-  const supabaseKey = process.env.SUPABASE_ANON_KEY || 'your-anon-key';
+  const supabaseUrl = process.env.SUPABASE_URL || 'https://wsntuugxdzynpslbrfdz.supabase.co';
+  const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndzbnR1dWd4ZHp5bnBzbGJyZmR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzNjgxMDAsImV4cCI6MjA2MDk0NDEwMH0.MSD584rXn9x9LkkNk1ITmRJYhppkfPbXqjCjOA0kZOk';
   
   db = createClient(supabaseUrl, supabaseKey);
   console.log('🔄 Usando Supabase para entorno de producción');
