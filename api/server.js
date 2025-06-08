@@ -48,10 +48,7 @@ app.use(async (req, res, next) => {
   }
 });
 
-// Rutas de la API
-app.use('/api/auth', authRoutes);
-app.use('/api/activities', activitiesRoutes);
-
+// Rutas específicas primero (antes de las rutas con middleware)
 // Ruta de prueba
 app.get('/api/test', (req, res) => {
   res.json({
@@ -91,6 +88,10 @@ app.get('/api/keep-alive', async (req, res) => {
     });
   }
 });
+
+// Rutas de la API con middleware
+app.use('/api/auth', authRoutes);
+app.use('/api/activities', activitiesRoutes);
 
 // Manejo de errores
 app.use((err, req, res, next) => {
