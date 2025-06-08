@@ -9,6 +9,9 @@ import Footer from './components/Footer';
 import Login from './components/login';
 import Actividades from './components/actividades';
 import KeepAlive from './components/KeepAlive';
+import PromotionPopup from './components/promotions/PromotionPopup';
+import { PopupProvider } from './contexts/PopupContext';
+import { getCurrentPromotion } from './config/promotions';
 
 function App() {
   const location = useLocation();
@@ -17,9 +20,13 @@ function App() {
   const shouldShowFooter = !hideFooterRoutes.includes(location.pathname);
   const shouldShowHeader = !hideHeaderRoutes.includes(location.pathname);
 
+  // Obtener la promoción actual
+  const currentPromotion = getCurrentPromotion();
+
   return (
-    <>
+    <PopupProvider>
       {shouldShowHeader && <Header />}
+      <PromotionPopup promotion={currentPromotion} />
       <Routes>
         <Route path="/" element={
   <>
@@ -51,7 +58,7 @@ function App() {
         <Route path="/keep-alive" element={<KeepAlive />} />
       </Routes>
       {shouldShowFooter && <Footer />}
-    </>
+    </PopupProvider>
   );
 }
 

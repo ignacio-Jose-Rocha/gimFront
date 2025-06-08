@@ -49,11 +49,16 @@
   position: relative;
   width: 100%;
   max-width: 900px;
-  margin: 0 auto;
-  overflow: hidden;
+  margin: 0 auto 0 auto;
+  padding: 0 80px; /* Espacio para las flechas */
+  overflow: visible; /* Permitir que las flechas se vean */
+}
+
+.carousel-inner {
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   background: white;
+  overflow: hidden;
 }
 
 .carousel-slide {
@@ -286,11 +291,11 @@
 }
 
 .prev-button {
-  left: -30px;
+  left: 10px;
 }
 
 .next-button {
-  right: -30px;
+  right: 10px;
 }
 
 .carousel-dots {

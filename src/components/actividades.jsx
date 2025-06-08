@@ -139,12 +139,13 @@ const actividades = () => {
           <i className="fas fa-chevron-left"></i>
         </button>
 
-        <div
-          className={`carousel-slide ${isTransitioning ? 'transitioning' : ''}`}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-        >
+        <div className="carousel-inner">
+          <div
+            className={`carousel-slide ${isTransitioning ? 'transitioning' : ''}`}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
           <div className="actividad-card" data-actividad={actividades[currentIndex].titulo}>
             <div className="imagen-container">
               <img
@@ -177,6 +178,7 @@ const actividades = () => {
                 <p className="horarios-text">{actividades[currentIndex].horarios}</p>
               </div>
             </div>
+          </div>
           </div>
         </div>
 

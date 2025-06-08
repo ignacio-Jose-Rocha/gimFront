@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_BASE_URL, API_ENDPOINTS } from '../config/api';
+import { usePopup } from '../contexts/PopupContext';
 import './login.css';
 
 const Login = () => {
@@ -9,6 +10,7 @@ const Login = () => {
   const [contrasenia, setContrasenia] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { popupsEnabled, setPopupsEnabled } = usePopup();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -72,6 +74,20 @@ const Login = () => {
               onChange={(e) => setContrasenia(e.target.value)}
             />
           </div>
+        </div>
+
+        <div className="popup-control">
+          <label className="switch-container">
+            <span className="switch-label">Deshabilitar popups promocionales</span>
+            <div className="switch">
+              <input
+                type="checkbox"
+                checked={!popupsEnabled}
+                onChange={(e) => setPopupsEnabled(!e.target.checked)}
+              />
+              <span className="slider"></span>
+            </div>
+          </label>
         </div>
 
         <button type="submit" className="login-button">
