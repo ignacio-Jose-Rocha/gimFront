@@ -1,11 +1,20 @@
 {
+  "functions": {
+    "api/keep-alive.js": {
+      "maxDuration": 10
+    }
+  },
   "crons": [
     {
-      "path": "/keep-alive",
+      "path": "/api/keep-alive",
       "schedule": "0 */6 * * *"
     }
   ],
   "rewrites": [
+    {
+      "source": "/api/keep-alive",
+      "destination": "/api/keep-alive.js"
+    },
     {
       "source": "/api/(.*)",
       "destination": "/api/server.js"
