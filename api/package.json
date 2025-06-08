@@ -1,8 +1,9 @@
 {
   "name": "gym-api",
   "version": "1.0.0",
-  "description": "API serverless para gimnasio con SQLite",
+  "description": "API serverless para gimnasio con Supabase",
   "main": "server.js",
+  "type": "commonjs",
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0",
     "bcryptjs": "^2.4.3",
@@ -16,7 +17,7 @@
   },
   "keywords": [
     "gym",
-    "sqlite",
+    "supabase",
     "express",
     "api",
     "vercel"
