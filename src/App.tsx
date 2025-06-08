@@ -12,12 +12,14 @@ import KeepAlive from './components/KeepAlive';
 
 function App() {
   const location = useLocation();
-  const hideFooterRoutes = ['/login'];
+  const hideFooterRoutes = ['/login', '/keep-alive'];
+  const hideHeaderRoutes = ['/keep-alive'];
   const shouldShowFooter = !hideFooterRoutes.includes(location.pathname);
+  const shouldShowHeader = !hideHeaderRoutes.includes(location.pathname);
 
   return (
     <>
-      <Header />
+      {shouldShowHeader && <Header />}
       <Routes>
         <Route path="/" element={
   <>
