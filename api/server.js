@@ -57,7 +57,8 @@ app.get('/api/test', (req, res) => {
   res.json({
     message: 'Backend del gimnasio funcionando correctamente',
     timestamp: new Date().toISOString(),
-    environment: process.env.VERCEL ? 'Vercel' : 'Local'
+    environment: process.env.VERCEL ? 'Vercel' : 'Local',
+    supabase_configured: !!(process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY)
   });
 });
 
