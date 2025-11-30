@@ -16,23 +16,11 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post(`${API_BASE_URL}${API_ENDPOINTS.LOGIN}`, {
-        nombre,
-        contrasenia
-      });
-
-      console.log('Respuesta del backend:', response);
-
-      if (response.data.token) {
-        localStorage.setItem('token', response.data.token);
-        navigate('/');
-      } else {
-        setError('Credenciales incorrectas');
-      }
-
-    } catch (error) {
-      console.error('Error en el login:', error);
+    if (nombre === 'admin' && contrasenia === 'centerFit') {
+      localStorage.setItem('token', 'admin-token');
+      window.dispatchEvent(new Event('loginSuccess'));
+      navigate('/');
+    } else {
       setError('Credenciales incorrectas');
     }
   };
@@ -82,20 +70,6 @@ const Login = () => {
               <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
             </button>
           </div>
-        </div>
-
-        <div className="popup-control">
-          <label className="switch-container">
-            <span className="switch-label">Deshabilitar popups promocionales</span>
-            <div className="switch">
-              <input
-                type="checkbox"
-                checked={!popupsEnabled}
-                onChange={(e) => setPopupsEnabled(!e.target.checked)}
-              />
-              <span className="slider"></span>
-            </div>
-          </label>
         </div>
 
         <button type="submit" className="login-button">

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { supabase } from '../config/supabase';
+
 import './CalendarioActividades.css';
 
 const CalendarioActividades = () => {
@@ -34,9 +35,21 @@ const CalendarioActividades = () => {
     loadActivities();
   }, []);
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      checkAdmin();
+    };
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('loginSuccess', handleStorageChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('loginSuccess', handleStorageChange);
+    };
+  }, []);
+
   const checkAdmin = () => {
-    const adminToken = localStorage.getItem('adminToken');
-    setIsAdmin(!!adminToken);
+    const token = localStorage.getItem('token');
+    setIsAdmin(!!token);
   };
 
   const loadActivities = async () => {
@@ -55,18 +68,20 @@ const CalendarioActividades = () => {
       const days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
       
       days.forEach(day => {
-        schedule[day] = data.filter(activity => activity.day === day);
+        schedule[day] = (data || []).filter(activity => activity.day === day);
       });
       
       setWeeklySchedule(schedule);
       setError(null);
     } catch (err) {
-      setError('Error cargando actividades');
-      console.error(err);
+      console.error('Error cargando actividades:', err);
+      setError('Error de conexión con Supabase');
     } finally {
       setLoading(false);
     }
   };
+
+
 
   const getDayName = (date) => {
     const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
@@ -168,28 +183,12 @@ const CalendarioActividades = () => {
     setShowForm(false);
   };
 
-  const handleLogin = () => {
-    const password = prompt('Ingresa la contraseña de administrador:');
-    if (password === 'admin123') {
-      localStorage.setItem('adminToken', 'true');
-      setIsAdmin(true);
-      setError(null);
-    } else if (password !== null) {
-      setError('Contraseña incorrecta');
-    }
-  };
 
-  const handleLogout = () => {
-    localStorage.removeItem('adminToken');
-    setIsAdmin(false);
-    setShowForm(false);
-    resetForm();
-  };
 
   const selectedDayActivities = getActivitiesForSelectedDay();
 
   return (
-    <div className="calendario-actividades">
+    <div id="calendario" className="calendario-actividades">
       <div className="calendario-header">
         <h2>Calendario de Actividades</h2>
         <p>Consulta el horario de clases y actividades</p>
