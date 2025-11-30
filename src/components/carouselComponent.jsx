@@ -1,91 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import img1 from '../assets/gimnasio.png';
+import './carouselComponent.css';
 
 const Galeria = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div
       id="galeria"
-      className="carousel slide"
-      data-bs-ride="carousel"
-      style={{ height: '400px', overflow: 'hidden', position: 'relative' }}
+      className="hero-carousel"
     >
-      <div className="carousel-inner h-100">
-        <div className="carousel-item active h-100">
-          <img
-            src={img1}
-            className="d-block w-100 h-100"
-            alt="Imagen 1"
-            style={{ objectFit: 'cover' }}
-          />
+      <div className="hero-image-container">
+        <img
+          src={img1}
+          className="hero-image"
+          alt="Center Fit Gimnasio"
+          style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+        />
+        <div className="hero-overlay"></div>
+      </div>
+
+      <div className="hero-content">
+        <div className="hero-text">
+          <h1 className="hero-title">
+            <span className="hero-title-line">TRANSFORMA</span>
+            <span className="hero-title-line">TU VIDA</span>
+          </h1>
+          <p className="hero-subtitle">Entrena con los mejores profesionales</p>
+          <div className="hero-features">
+            <div className="feature-item">
+              <i className="fas fa-dumbbell"></i>
+              <span>Equipamiento Premium</span>
+            </div>
+            <div className="feature-item">
+              <i className="fas fa-users"></i>
+              <span>Clases Grupales</span>
+            </div>
+            <div className="feature-item">
+              <i className="fas fa-trophy"></i>
+              <span>Resultados Reales</span>
+            </div>
+          </div>
         </div>
       </div>
 
-
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#customCarousel"
-        data-bs-slide="prev"
-        style={{
-          position: 'absolute',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          left: '10px',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          border: 'none',
-          borderRadius: '50%',
-          width: '60px',
-          height: '60px',
-          zIndex: 10,
-        }}
-      >
-        <span
-          className="carousel-control-prev-icon"
-          aria-hidden="true"
-          style={{
-    display: 'inline-block',
-    border: 'solid #ffff00',
-    borderWidth: '0 8px 8px 0',
-    padding: '10px',
-    transform: 'rotate(135deg)',
-    WebkitTransform: 'rotate(135deg)',
-  }}
-        ></span>
-        <span className="visually-hidden">Anterior</span>
-      </button>
-
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#customCarousel"
-        data-bs-slide="next"
-        style={{
-          position: 'absolute',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          right: '10px',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          border: 'none',
-          borderRadius: '50%',
-          width: '60px',
-          height: '60px',
-          zIndex: 10,
-        }}
-      >
-        <span
-          className="carousel-control-next-icon"
-          aria-hidden="true"
-           style={{
-    display: 'inline-block',
-    border: 'solid #ffff00',
-    borderWidth: '0 8px 8px 0',
-    padding: '10px',
-    transform: 'rotate(-45deg)',
-    WebkitTransform: 'rotate(-45deg)',
-  }}
-        ></span>
-        <span className="visually-hidden">Siguiente</span>
-      </button>
+      <div className="scroll-indicator">
+        <div className="scroll-arrow"></div>
+      </div>
     </div>
   );
 };

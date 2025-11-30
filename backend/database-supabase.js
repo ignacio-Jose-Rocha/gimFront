@@ -10,8 +10,8 @@ if (isVercel || isProduction) {
   // En Vercel o producción, usar Supabase
   const { createClient } = require('@supabase/supabase-js');
   
-  const supabaseUrl = process.env.SUPABASE_URL || 'https://wsntuugxdzynpslbrfdz.supabase.co';
-  const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndzbnR1dWd4ZHp5bnBzbGJyZmR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzNjgxMDAsImV4cCI6MjA2MDk0NDEwMH0.MSD584rXn9x9LkkNk1ITmRJYhppkfPbXqjCjOA0kZOk';
+  const supabaseUrl = process.env.SUPABASE_URL || 'https://jhntnrplogyjdjtlqfba.supabase.co';
+  const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpobnRucnBsb2d5amRqdGxxZmJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0NjM5NTAsImV4cCI6MjA4MDAzOTk1MH0.JkeEhZdJsHZvFlpThKBy5KHviFtP8czS5aB4mzJXm-w';
   
   db = createClient(supabaseUrl, supabaseKey);
   console.log('🔄 Usando Supabase para entorno de producción');

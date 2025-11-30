@@ -1,0 +1,333 @@
+.admin-actividades {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.admin-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: #ff6600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.btn-add {
+  background: linear-gradient(135deg, #ff6600 0%, #dc2626 100%);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
+}
+
+.btn-add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 102, 0, 0.4);
+}
+
+.error-message {
+  background: #dc2626;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #ff6600;
+}
+
+.activity-form {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 102, 0, 0.2);
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fbbf24;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid rgba(255, 102, 0, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ff6600;
+  background: rgba(255, 102, 0, 0.1);
+  box-shadow: 0 0 10px rgba(255, 102, 0, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group select option {
+  background: #1a1a1a;
+  color: white;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.btn-submit {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #ff6600 0%, #fbbf24 100%);
+  color: #1a1a1a;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 102, 0, 0.4);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #ff6600;
+}
+
+.activities-schedule {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.day-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 102, 0, 0.2);
+  border-radius: 15px;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.day-section:hover {
+  border-color: #ff6600;
+  box-shadow: 0 8px 20px rgba(255, 102, 0, 0.1);
+}
+
+.day-section h2 {
+  color: #fbbf24;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #ff6600;
+  padding-bottom: 10px;
+}
+
+.activities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.activity-item {
+  background: rgba(255, 102, 0, 0.05);
+  border: 1px solid rgba(255, 102, 0, 0.3);
+  border-radius: 10px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.activity-item:hover {
+  background: rgba(255, 102, 0, 0.1);
+  border-color: #ff6600;
+}
+
+.activity-info h3 {
+  color: #ff6600;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.activity-info p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.activity-info strong {
+  color: #fbbf24;
+}
+
+.activity-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-edit,
+.btn-delete {
+  flex: 1;
+  min-width: 100px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, #fbbf24 0%, #ff6600 100%);
+  color: #1a1a1a;
+}
+
+.btn-edit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  color: white;
+}
+
+.btn-delete:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+.no-activities {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .admin-actividades {
+    padding: 20px 10px;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn-add {
+    width: 100%;
+    text-align: center;
+  }
+
+  .activity-form {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .activities-schedule {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-actions {
+    flex-direction: column;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-actividades {
+    padding: 15px 8px;
+  }
+
+  .admin-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .activity-form {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .day-section {
+    padding: 15px;
+  }
+
+  .day-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  .activity-item {
+    padding: 12px;
+  }
+
+  .activity-info h3 {
+    font-size: 1rem;
+  }
+
+  .activity-info p {
+    font-size: 0.85rem;
+  }
+
+  .btn-submit {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}
