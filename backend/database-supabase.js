@@ -189,13 +189,13 @@ const initSampleDataSupabase = async () => {
   try {
     // Verificar si ya existen actividades
     const { data: existingActivities } = await db
-      .from('activities')
+      .from('calendar_activities')
       .select('id')
       .limit(1);
 
     if (!existingActivities || existingActivities.length === 0) {
       const { error } = await db
-        .from('activities')
+        .from('calendar_activities')
         .insert(sampleActivities);
 
       if (error) {
@@ -236,7 +236,7 @@ const getUserByUsername = async (username) => {
 const getActivitiesByDate = async (date) => {
   if (isVercel || isProduction) {
     const { data, error } = await db
-      .from('activities')
+      .from('calendar_activities')
       .select('*')
       .eq('date', date)
       .order('time');
@@ -256,7 +256,7 @@ const getActivitiesByDate = async (date) => {
 const getAllActivities = async () => {
   if (isVercel || isProduction) {
     const { data, error } = await db
-      .from('activities')
+      .from('calendar_activities')
       .select('*')
       .order('date')
       .order('time');
@@ -276,7 +276,7 @@ const getAllActivities = async () => {
 const createActivity = async (date, title, time, description = '') => {
   if (isVercel || isProduction) {
     const { data, error } = await db
-      .from('activities')
+      .from('calendar_activities')
       .insert([{ date, title, time, description }])
       .select()
       .single();
@@ -297,7 +297,7 @@ const createActivity = async (date, title, time, description = '') => {
 const updateActivity = async (id, date, title, time, description = '') => {
   if (isVercel || isProduction) {
     const { data, error } = await db
-      .from('activities')
+      .from('calendar_activities')
       .update({ date, title, time, description, updated_at: new Date().toISOString() })
       .eq('id', id)
       .select()
@@ -319,7 +319,7 @@ const updateActivity = async (id, date, title, time, description = '') => {
 const deleteActivity = async (id) => {
   if (isVercel || isProduction) {
     const { error } = await db
-      .from('activities')
+      .from('calendar_activities')
       .delete()
       .eq('id', id);
     

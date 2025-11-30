@@ -69,8 +69,8 @@ const Calendario = () => {
 
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); 
-    setIsLoggedIn(false); 
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
     window.location.reload();
   };
 
@@ -410,7 +410,7 @@ const Calendario = () => {
                     id="activity-title"
                     type="text"
                     value={newActivity.title}
-                    onChange={(e) => setNewActivity({...newActivity, title: e.target.value})}
+                    onChange={(e) => setNewActivity({ ...newActivity, title: e.target.value })}
                     placeholder="Ej: Yoga, Spinning, Funcional..."
                     required
                   />
@@ -422,7 +422,7 @@ const Calendario = () => {
                     id="activity-start-time"
                     type="time"
                     value={newActivity.startTime}
-                    onChange={(e) => setNewActivity({...newActivity, startTime: e.target.value})}
+                    onChange={(e) => setNewActivity({ ...newActivity, startTime: e.target.value })}
                     required
                   />
                 </div>
@@ -433,7 +433,7 @@ const Calendario = () => {
                     id="activity-end-time"
                     type="time"
                     value={newActivity.endTime}
-                    onChange={(e) => setNewActivity({...newActivity, endTime: e.target.value})}
+                    onChange={(e) => setNewActivity({ ...newActivity, endTime: e.target.value })}
                     required
                   />
                 </div>
@@ -443,7 +443,7 @@ const Calendario = () => {
                   <textarea
                     id="activity-description"
                     value={newActivity.description}
-                    onChange={(e) => setNewActivity({...newActivity, description: e.target.value})}
+                    onChange={(e) => setNewActivity({ ...newActivity, description: e.target.value })}
                     placeholder="Descripción adicional de la actividad..."
                     rows="3"
                   />

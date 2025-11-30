@@ -11,7 +11,7 @@ const Footer = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token); 
+    setIsLoggedIn(!!token);
   }, []);
 
   const redirectToLogin = () => {
@@ -45,7 +45,7 @@ const Footer = () => {
         </ul>
       </div>
 
-      {/* Solo mostrar esta columna si NO está logueado */}
+      {/* Mostrar botón de login si NO está logueado */}
       {!isLoggedIn && (
         <div className="footer-column">
           <h3 className="footer-title">
@@ -55,6 +55,27 @@ const Footer = () => {
           <button className="footer-button" onClick={redirectToLogin}>
             <i className="fas fa-key"></i>
             <span>Área Administrativa</span>
+          </button>
+        </div>
+      )}
+
+      {/* Mostrar botón de cerrar sesión si está logueado */}
+      {isLoggedIn && (
+        <div className="footer-column">
+          <h3 className="footer-title">
+            <i className="fas fa-user-check"></i>
+            Sesión Activa
+          </h3>
+          <button
+            className="footer-button logout-button"
+            onClick={() => {
+              localStorage.removeItem('token');
+              setIsLoggedIn(false);
+              window.location.reload();
+            }}
+          >
+            <i className="fas fa-sign-out-alt"></i>
+            <span>Cerrar Sesión</span>
           </button>
         </div>
       )}

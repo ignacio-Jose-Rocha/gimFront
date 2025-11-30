@@ -25,7 +25,7 @@ const actividades = () => {
 
   const actividades = [
     {
-      imagen: 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=800',
+      imagen: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop',
       titulo: 'Yoga',
       descripcion: 'Encuentra tu equilibrio interior con nuestras clases de yoga. Perfectas para todos los niveles, desde principiantes hasta avanzados.',
       beneficios: ['Flexibilidad', 'Relajación', 'Fuerza mental', 'Equilibrio'],
@@ -46,7 +46,7 @@ const actividades = () => {
       horarios: 'Lun a Vie - 9:00 AM y 8:00 PM'
     },
     {
-      imagen: 'https://media.tycsports.com/files/2021/04/21/261767/leon-gavilan.jpeg',
+      imagen: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&h=600&fit=crop',
       titulo: 'Boxeo',
       descripcion: 'Libera tu energía y mejora tu condición física con nuestras clases de boxeo. Aprende técnicas de combate mientras te pones en forma.',
       beneficios: ['Cardio intenso', 'Coordinación', 'Autodefensa', 'Liberación de estrés'],

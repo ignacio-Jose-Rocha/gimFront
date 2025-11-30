@@ -1,0 +1,691 @@
+.calendario-actividades {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.calendario-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.calendario-header h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.calendario-header p {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+}
+
+.admin-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-login-admin,
+.btn-logout-admin {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-login-admin:hover,
+.btn-logout-admin:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
+}
+
+.error-message {
+  background: #dc2626;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #ff6600;
+  text-align: center;
+}
+
+.calendario-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.calendar-wrapper {
+  background: rgba(59, 130, 246, 0.05);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+}
+
+.custom-calendar {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: white;
+}
+
+.custom-calendar .react-calendar__tile {
+  color: white;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.custom-calendar .react-calendar__tile:hover {
+  background: rgba(59, 130, 246, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+}
+
+.custom-calendar .react-calendar__tile--active {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+}
+
+.custom-calendar .react-calendar__month-view__weekdays__weekday {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.activities-wrapper {
+  background: rgba(139, 92, 246, 0.05);
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
+}
+
+.selected-day-info h3 {
+  background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.activities-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.activity-card {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 12px;
+  padding: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.05);
+}
+
+.activity-card:hover {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border-color: #8b5cf6;
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.2);
+  transform: translateY(-2px);
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.activity-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.activity-level {
+  background: linear-gradient(135deg, #60a5fa 0%, #8b5cf6 100%);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.activity-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.detail-row i {
+  color: #60a5fa;
+  width: 20px;
+}
+
+.detail-row.description {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 102, 0, 0.2);
+}
+
+.activity-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 102, 0, 0.2);
+}
+
+.btn-edit,
+.btn-delete {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+}
+
+.btn-edit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.btn-delete:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(239, 68, 68, 0.4);
+}
+
+.no-activities {
+  text-align: center;
+  padding: 40px 20px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.no-activities i {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.admin-panel {
+  background: rgba(236, 72, 153, 0.05);
+  border: 2px solid rgba(236, 72, 153, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.1);
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.admin-header h3 {
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-toggle-form {
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-toggle-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(236, 72, 153, 0.4);
+}
+
+.activity-form {
+  background: rgba(236, 72, 153, 0.08);
+  border: 1px solid rgba(236, 72, 153, 0.2);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  border-radius: 8px;
+  background: rgba(236, 72, 153, 0.05);
+  color: white;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ec4899;
+  background: rgba(236, 72, 153, 0.15);
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.3);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group select option {
+  background: #1a1a1a;
+  color: white;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-submit,
+.btn-cancel {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+  color: white;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.admin-activities {
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 102, 0, 0.2);
+}
+
+.admin-activities h4 {
+  color: #fbbf24;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.activities-by-day {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.day-group {
+  background: rgba(255, 102, 0, 0.05);
+  border: 1px solid rgba(255, 102, 0, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.day-group h5 {
+  color: #ff6600;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.day-activities {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-activity-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 102, 0, 0.2);
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-activity-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  font-size: 0.85rem;
+}
+
+.admin-activity-info .time {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.admin-activity-info .name {
+  color: #ff6600;
+  font-weight: 600;
+}
+
+.admin-activity-info .instructor {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+}
+
+.admin-activity-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-small-edit,
+.btn-small-delete {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.btn-small-edit {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+}
+
+.btn-small-edit:hover {
+  background: rgba(251, 191, 36, 0.4);
+}
+
+.btn-small-delete {
+  background: rgba(220, 38, 38, 0.2);
+  color: #dc2626;
+}
+
+.btn-small-delete:hover {
+  background: rgba(220, 38, 38, 0.4);
+}
+
+.no-activities-day {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 10px;
+}
+
+.custom-calendar .react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.custom-calendar .react-calendar__navigation label {
+  color: #60a5fa;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.custom-calendar .react-calendar__navigation button {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.custom-calendar .react-calendar__navigation button:hover {
+  background: rgba(59, 130, 246, 0.4);
+  border-color: #60a5fa;
+}
+
+@media (max-width: 1024px) {
+  .calendario-main {
+    grid-template-columns: 1fr;
+  }
+
+  .activities-by-day {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .calendario-actividades {
+    padding: 20px 10px;
+  }
+
+  .calendario-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-toggle-form {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .btn-submit,
+  .btn-cancel {
+    width: 100%;
+  }
+
+  .activities-by-day {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-activity-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-activity-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendario-actividades {
+    padding: 15px 8px;
+  }
+
+  .calendario-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .calendario-main {
+    gap: 15px;
+  }
+
+  .calendar-wrapper,
+  .activities-wrapper,
+  .admin-panel {
+    padding: 15px;
+  }
+
+  .selected-day-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .activities-list {
+    max-height: 300px;
+  }
+
+  .activity-card {
+    padding: 12px;
+  }
+
+  .activity-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .form-grid {
+    gap: 12px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .admin-activity-info {
+    font-size: 0.8rem;
+  }
+
+  .btn-small-edit,
+  .btn-small-delete {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+}

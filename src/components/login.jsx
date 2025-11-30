@@ -8,6 +8,7 @@ import './login.css';
 const Login = () => {
   const [nombre, setNombre] = useState('');
   const [contrasenia, setContrasenia] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { popupsEnabled, setPopupsEnabled } = usePopup();
@@ -68,11 +69,18 @@ const Login = () => {
           <div className="input-wrapper">
             <i className="fas fa-lock"></i>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Contraseña"
               value={contrasenia}
               onChange={(e) => setContrasenia(e.target.value)}
             />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+            </button>
           </div>
         </div>
 

@@ -12,8 +12,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middlewares
+// Middlewares
 app.use(cors({
-  origin: 'http://localhost:5173', // URL del frontend de Vite
+  origin: ['http://localhost:5173', 'http://localhost:5174'], // Permitir ambos puertos de Vite
   credentials: true
 }));
 
